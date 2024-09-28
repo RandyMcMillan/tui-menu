@@ -512,6 +512,11 @@ impl<T> MenuItem<T> {
 
 /// Widget focus on display/render
 pub struct Menu<T> {
+    network: u8,
+    mainnet_style: Style,
+    signet_style: Style,
+    testnet3_style: Style,
+    testnet4_style: Style,
     /// style for default item style
     default_item_style: Style,
     /// style for highlighted item
@@ -526,10 +531,15 @@ pub struct Menu<T> {
 impl<T> Menu<T> {
     pub fn new() -> Self {
         Self {
-            highlight_item_style: Style::default().fg(Color::White).bg(Color::LightBlue),
-            default_item_style: Style::default().fg(Color::White),
+            network: 0,
+            mainnet_style: Style::default().fg(Color::Indexed(200)).bg(Color::Reset),
+            signet_style: Style::default().fg(Color::Indexed(057)).bg(Color::Reset),
+            testnet3_style: Style::default().fg(Color::Indexed(076)).bg(Color::Reset),
+            testnet4_style: Style::default().fg(Color::Indexed(120)).bg(Color::Reset),
+            highlight_item_style: Style::default().fg(Color::Blue).bg(Color::Reset),
+            default_item_style: Style::default().fg(Color::Reset),
             drop_down_width: 20,
-            drop_down_style: Style::default().bg(Color::DarkGray),
+            drop_down_style: Style::default().bg(Color::Reset),
             _priv: Default::default(),
         }
     }
@@ -611,6 +621,16 @@ impl<T> Menu<T> {
                     item_name,
                     if is_active {
                         self.highlight_item_style
+                    } else if self.network == 0 {
+                        self.default_item_style
+                    } else if self.network == 1 {
+                        self.mainnet_style
+                    } else if self.network == 2 {
+                        self.signet_style
+                    } else if self.network == 3 {
+                        self.testnet3_style
+                    } else if self.network == 4 {
+                        self.testnet4_style
                     } else {
                         self.default_item_style
                     },
