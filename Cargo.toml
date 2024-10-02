@@ -6,7 +6,6 @@ description = "A menu widget for Ratatui"
 license = "MIT OR Apache-2.0"
 keywords = ["tui"]
 repository = "https://github.com/shuoli84/tui-menu"
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
