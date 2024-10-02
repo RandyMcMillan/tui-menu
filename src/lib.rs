@@ -532,10 +532,15 @@ impl<T> Menu<T> {
     pub fn new() -> Self {
         Self {
             network: 0,
+            //
             mainnet_style: Style::default().fg(Color::Indexed(200)).bg(Color::Reset),
+            //
             signet_style: Style::default().fg(Color::Indexed(057)).bg(Color::Reset),
+            //
             testnet3_style: Style::default().fg(Color::Indexed(076)).bg(Color::Reset),
+            //
             testnet4_style: Style::default().fg(Color::Indexed(120)).bg(Color::Reset),
+
             highlight_item_style: Style::default().fg(Color::Blue).bg(Color::Reset),
             default_item_style: Style::default().fg(Color::Reset),
             drop_down_width: 20,
