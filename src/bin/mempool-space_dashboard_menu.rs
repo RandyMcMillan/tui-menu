@@ -1,4 +1,5 @@
 use color_eyre::config::HookBuilder;
+use mempool_space::*;
 use ratatui::{
     crossterm::{
         event::{self, Event, KeyCode},
@@ -83,7 +84,7 @@ impl App {
                                                                             vec![],
                                                                         ),
                                                                         MenuItem::item(
-                                                                            "83Mainnet",
+                                                                            "86Mainnet",
                                                                             Action::Mainnet,
                                                                         ),
                                                                     ],
@@ -95,7 +96,7 @@ impl App {
                                                             ],
                                                         ),
                                                         MenuItem::item(
-                                                            "89Mainnet",
+                                                            "98Mainnet",
                                                             Action::Mainnet,
                                                         ),
                                                     ],
@@ -103,95 +104,137 @@ impl App {
                                                 MenuItem::item("Item 3a", Action::Exit),
                                             ],
                                         ),
-                                        MenuItem::item("95Mainnet", Action::Mainnet),
+                                        MenuItem::item("106Mainnet", Action::Mainnet),
                                     ],
                                 ),
-                                MenuItem::item("98Mainnet", Action::Mainnet),
+                                MenuItem::item("109Mainnet", Action::Mainnet),
                             ],
                         ),
                         //
                         MenuItem::group(
                             "Signet",
-                            vec![MenuItem::group(
-                                "Nested 1",
-                                vec![MenuItem::group(
-                                    "Nested 2",
+                            vec![
+                                MenuItem::group(
+                                    "Nested 1",
                                     vec![
                                         MenuItem::group(
-                                            "Nested 3",
-                                            vec![MenuItem::group(
-                                                "Nested 4",
-                                                vec![
-                                                    MenuItem::group(
-                                                        "Nested 5",
-                                                        vec![MenuItem::group("Nested 6", vec![])],
-                                                    ),
-                                                    MenuItem::item("Item 5", Action::Exit),
-                                                ],
-                                            )],
+                                            "Nested 2",
+                                            vec![
+                                                MenuItem::group(
+                                                    "Nested 3",
+                                                    vec![
+                                                        MenuItem::group(
+                                                            "Nested 4",
+                                                            vec![
+                                                                MenuItem::group(
+                                                                    "Nested 5",
+                                                                    vec![MenuItem::group(
+                                                                        "Nested 6",
+                                                                        vec![],
+                                                                    )],
+                                                                ),
+                                                                MenuItem::item(
+                                                                    "Item 5",
+                                                                    Action::Exit,
+                                                                ),
+                                                            ],
+                                                        ),
+                                                        MenuItem::item("142Signet", Action::Signet),
+                                                    ],
+                                                ),
+                                                MenuItem::item("Item 3a", Action::Exit),
+                                            ],
                                         ),
-                                        MenuItem::item("Item 3a", Action::Exit),
+                                        MenuItem::item("150Signet", Action::Signet),
                                     ],
-                                )],
-                            )],
+                                ),
+                                MenuItem::item("153Signet", Action::Signet),
+                            ],
                         ),
                         //
                         MenuItem::group(
                             "Testnet3",
-                            vec![MenuItem::group(
-                                "Nested 1",
-                                vec![MenuItem::group(
-                                    "Nested 2",
+                            vec![
+                                MenuItem::group(
+                                    "Nested 1",
                                     vec![
                                         MenuItem::group(
-                                            "Nested 3",
-                                            vec![MenuItem::group(
-                                                "Nested 4",
-                                                vec![
-                                                    MenuItem::group(
-                                                        "Nested 5",
-                                                        vec![MenuItem::group("Nested 6", vec![])],
-                                                    ),
-                                                    MenuItem::item("Item 5", Action::Exit),
-                                                ],
-                                            )],
+                                            "Nested 2",
+                                            vec![
+                                                MenuItem::group(
+                                                    "Nested 3",
+                                                    vec![
+                                                        MenuItem::group(
+                                                            "Nested 4",
+                                                            vec![
+                                                                MenuItem::group(
+                                                                    "Nested 5",
+                                                                    vec![MenuItem::group(
+                                                                        "Nested 6",
+                                                                        vec![],
+                                                                    )],
+                                                                ),
+                                                                MenuItem::item(
+                                                                    "Item 5",
+                                                                    Action::Exit,
+                                                                ),
+                                                            ],
+                                                        ),
+                                                        MenuItem::item(
+                                                            "186Testnet3",
+                                                            Action::Testnet3,
+                                                        ),
+                                                    ],
+                                                ),
+                                                MenuItem::item("Item 3a", Action::Exit),
+                                            ],
                                         ),
-                                        MenuItem::item("Item 3a", Action::Exit),
+                                        MenuItem::item("194Testnet3", Action::Testnet3),
                                     ],
-                                )],
-                            )],
+                                ),
+                                MenuItem::item("197Testnet3", Action::Testnet3),
+                            ],
                         ),
                         //
                         MenuItem::group(
                             "Testnet4",
-                            vec![MenuItem::group(
-                                "Nested 1",
-                                vec![MenuItem::group(
-                                    "Nested 2",
+                            vec![
+                                MenuItem::group(
+                                    "Nested 1",
                                     vec![
                                         MenuItem::group(
-                                            "Nested 3",
-                                            vec![MenuItem::group(
-                                                "Nested 4",
-                                                vec![
-                                                    MenuItem::group(
-                                                        "Nested 5",
-                                                        vec![MenuItem::group("Nested 6", vec![])],
-                                                    ),
-                                                    MenuItem::item("Item 5", Action::Exit),
-                                                ],
-                                            )],
+                                            "Nested 2",
+                                            vec![
+                                                MenuItem::group(
+                                                    "Nested 3",
+                                                    vec![MenuItem::group(
+                                                        "Nested 4",
+                                                        vec![
+                                                            MenuItem::group(
+                                                                "Nested 5",
+                                                                vec![MenuItem::group(
+                                                                    "Nested 6",
+                                                                    vec![],
+                                                                )],
+                                                            ),
+                                                            MenuItem::item("Item 5", Action::Exit),
+                                                        ],
+                                                    )],
+                                                ),
+                                                MenuItem::item("Item 3a", Action::Exit),
+                                            ],
                                         ),
-                                        MenuItem::item("Item 3a", Action::Exit),
+                                        MenuItem::item("229Testnet4", Action::Testnet4),
                                     ],
-                                )],
-                            )],
+                                ),
+                                MenuItem::item("232Testnet4", Action::Testnet4),
+                            ],
                         ),
                         //
                         MenuItem::item("Exit", Action::Exit),
                     ],
                 ),
-                MenuItem::item("Exit", Action::Exit),
+                MenuItem::item("TOPExit", Action::Exit),
             ]),
         }
     }
@@ -241,7 +284,7 @@ impl App {
                         }
                     },
                 }
-                //self.menu.reset();
+                self.menu.reset();
             }
         }
     }
@@ -276,6 +319,6 @@ impl Widget for &mut App {
             .render(log, buf);
 
         // draw menu last, so it renders on top of other content
-        Menu::new().render(menu, buf, &mut self.menu);
+        let menu = Menu::new().render(menu, buf, &mut self.menu);
     }
 }
