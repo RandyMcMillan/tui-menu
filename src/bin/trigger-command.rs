@@ -149,7 +149,7 @@ impl App {
                             self.content = format!("content of {file}");
                         }
                         Action::AboutVersion => {
-                            self.content = format!("{}", Self::get_pkg_version());
+                            self.content = format!("v{}", Self::get_pkg_version());
                         }
                         Action::AboutAuthor => {
                             self.content = format!("{}", Self::get_pkg_authors());
