@@ -55,6 +55,7 @@ struct App {
     menu: MenuState<Action>,
 }
 
+/// impl App - menu structure
 impl App {
     fn new() -> Self {
         Self {
@@ -112,15 +113,19 @@ enum Action {
     AboutHelp,
 }
 
+/// impl App add additional action functions used in app life cycle
 impl App {
+    /// fn get_pkg_version() -> String
     fn get_pkg_version() -> String {
         let version = env!("CARGO_PKG_VERSION");
         version.to_string()
     }
+    /// fn get_pkg_authors() -> String
     fn get_pkg_authors() -> String {
         let authors = env!("CARGO_PKG_AUTHORS");
         authors.to_string()
     }
+    /// fn run\<B: Backend\>(mut self, terminal: &mut Terminal\<B\>) -> io::Result\<()\>
     fn run<B: Backend>(mut self, terminal: &mut Terminal<B>) -> io::Result<()> {
         loop {
             terminal.draw(|frame| frame.render_widget(&mut self, frame.size()))?;
