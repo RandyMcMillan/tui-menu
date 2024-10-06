@@ -125,6 +125,11 @@ impl App {
         let authors = env!("CARGO_PKG_AUTHORS");
         authors.to_string()
     }
+    /// fn get_pkg_help() -> String
+    fn get_pkg_help() -> String {
+        let help = String::from("line 1\nline 2\nline 3\n");
+        help.to_string()
+    }
     /// fn run\<B: Backend\>(mut self, terminal: &mut Terminal\<B\>) -> io::Result\<()\>
     fn run<B: Backend>(mut self, terminal: &mut Terminal<B>) -> io::Result<()> {
         loop {
@@ -153,6 +158,9 @@ impl App {
                         }
                         Action::AboutAuthor => {
                             self.content = format!("{}", Self::get_pkg_authors());
+                        }
+                        Action::AboutHelp => {
+                            self.content = format!("{}", Self::get_pkg_help());
                         }
                         action => {
                             self.content = format!("{action:?} not implemented");
